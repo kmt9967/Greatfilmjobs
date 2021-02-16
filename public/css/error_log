@@ -1,0 +1,4 @@
+[05-Dec-2019 03:50:12 America/New_York] PHP Fatal error:  Cannot access empty property in /home/briskwizards/public_html/dev/include/config.php on line 25
+[05-Dec-2019 03:50:35 America/New_York] PHP Fatal error:  Cannot access empty property in /home/briskwizards/public_html/dev/include/config.php on line 25
+[30-Dec-2019 09:38:15 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/briskwizards/public_html/dev/include/config.php on line 157
+[30-Dec-2019 10:01:42 UTC] PHP Parse error:  syntax error, unexpected end of file in /home/briskwizards/public_html/dev/include/config.php on line 158
