@@ -82,7 +82,7 @@ class UserController extends Controller
            $file_name=pathinfo($filewex,PATHINFO_FILENAME);
            $ex= $file->getClientOriginalExtension();
            $store_name=$file_name."_".time().".".$ex;
-           $path=$file->storeAs('/images/membersprofilepic/',$store_name);
+           $path=$file->move('images/membersprofilepic/',$store_name);
 
            $data=User::Find(auth()->user()->id)->update([
             'email' => $request->input('email'),

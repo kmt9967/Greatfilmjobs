@@ -85,7 +85,8 @@
                                   		<div class="column-l">
                                           <label class="editgigformtitle">Profile Picture</label>
                                           <br />
-                                          <img src="/images/membersprofilepic/{{$user->profilepicture}}" />
+                                          <br />
+                                          <img src="/images/membersprofilepic/{{$user->profilepicture}}" width="150" height="100" />
                                         </div>
                                         <div class="column-r">
                                           <div class="image-info">
