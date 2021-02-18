@@ -324,16 +324,16 @@ Translation,GreatFilmJobs.com">
                   </div>
                 </div>
                    <div class="textdropdown sublinks 111">
-                     <p><a href="/manage_gigs">Seller <span class="arrow"><img src="/images/scriptolution_navdroparrow.png" alt="" /></span></a></p>
+                     <p><a href="/myjobs">Seller <span class="arrow"><img src="/images/scriptolution_navdroparrow.png" alt="" /></span></a></p>
                   <div class="dropdownbox">
                       <ul>
-                          <li><a href="/new">Create a Job</a></li>
-                          <li><a href="/manage_gigs">My Jobs</a></li>
-                          <li><a href="/manage_orders">Manage Sales</a></li>
-                          <li><a href="/balance?tab=sales">Revenues</a></li>
+                          <li><a href="/create_job">Create a Job</a></li>
+                          <li><a href="/myjobs">My Jobs</a></li>
+                          <li><a href="/manage_order">Manage Sales</a></li>
+                          <li><a href="/balance">Revenues</a></li>
                           <li><a href="/purchases">Purchases</a></li>
                            
-                          <li><a href="/requests">Buyer Requests</a></li>
+                          <li><a href="/buyer_request">Buyer Requests</a></li>
                       </ul>
                   </div>
               </div>
@@ -341,10 +341,10 @@ Translation,GreatFilmJobs.com">
                      <p><a href="/balance">Buyer <span class="arrow"><img src="/images/scriptolution_navdroparrow.png" alt="" /></span></a></p>
                   <div class="dropdownbox">
                       <ul>
-                          <li><a href="/newrequest">Post a Request</a></li>
+                          <li><a href="/post_request">Post a Request</a></li>
                           <li><a href="/myrequests">My Requests</a></li>
                           <li><a href="/orders">My Shopping</a></li>
-                          <li><a href="/balance">Payments</a></li>
+                          <li><a href="/payment">Payments</a></li>
                           
                       </ul>
                   </div>
@@ -407,7 +407,7 @@ Translation,GreatFilmJobs.com">
                         	<ul> @php($data = App\Models\Categories::select('name')->where('parent', '=', $x->CATID)->
                                 get())
                                 @foreach($data as $d)
-                            	    <li><a href="/categories/AfterEffects(templates)">{{htmlspecialchars_decode($d->name)}}</a></li>
+                            	    <li><a href="/categories/{{str_replace(' ', '', htmlspecialchars_decode($d->name))}}">{{htmlspecialchars_decode($d->name)}}</a></li>
                                 @endforeach                 
                                 </ul>
                         </div>

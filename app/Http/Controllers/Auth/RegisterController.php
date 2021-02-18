@@ -79,7 +79,7 @@ class RegisterController extends Controller
             'scriptolutionuserslogan' => 'none' ,
             'addtime' => 'none',
             'lastlogin' => 'none',
-            'profilepicture' => 'pic.jpg',
+            'profilepicture' => 'noprofilepicture.gif',
             'ip'=> 'none',
             'lip' => 'none' ,
             'aemail'=> 'none' ,
