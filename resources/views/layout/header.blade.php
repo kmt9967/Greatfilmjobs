@@ -5,212 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />    
     <title>GreatFilmJobs.com: Buy. Sell. Have fun! - GreatFilmJobs.com</title>
 	<meta name="description" content="GreatFilmJobs.com: Buy. Sell. Have fun! - GreatFilmJobs.com for all kinds of MicroJobs! Buy. Sell. Have fun! - GreatFilmJobs.com">
-	<meta name="keywords" content="GreatFilmJobs.com: Buy. Sell. Have fun!,GreatFilmJobs.com for all kinds of MicroJobs! Buy. Sell. Have fun! Film Jobs Great Micro Jobs
-Gig Extra Gig Video Greeting Props Director Movie audio music
-Animation &amp; Video
-After Effects
-Animated Characters &amp; Modeling
-Audio Stocks
-Editing &amp; Post Production
-Games Developers
-Intro &amp; Animated Logos
-Lyrics &amp; Music Videos
-Others - Video &amp; Animation
-Promotional &amp; Branded Videos
-Spokespersons &amp; Testimonials
-Video Greetings
-Video Stocks
-Whiteboard &amp; Explainer Videos
-Art Direction
-Animals
-Animatronics Puppets
-Arts &amp; Crafts
-Costumes
-Costumes Rental / Sale
-Dummy Props
-Fashion Designers
-Handmade Jewellery
-Locations
-Makeup
-Others - Art Direction
-Props
-Sets
-Special Effects
-Storyboarding
-Styling &amp; Beauty
-Vehicles
-Artistes / Models
-Anchors
-Choreographers
-Comedians
-Crowd
-Dancers
-Female
-Female Child
-Junior Artistes
-Male
-Male Child
-Others - Artistes / Models
-Stunt People
-Business
-Box Office Reports / Reviews
-Branding Services
-Business - Others
-Business Plans
-Business Tips
-Career Advice
-Financial Consulting
-Legal Consulting
-Market Research
-Presentations
-Virtual Assistants
-Crew
-Art Director
-Artist
-Asst Director
-Audio Engineer
-Best Boy
-Boom Operator
-Camera Operator
-Choreopgrapher
-Cinematographer
-Composer
-Costume Designer
-Countinuity
-Designer
-Director
-Dolly Grip
-Drivers
-Electrician
-Executive Producer
-Focus Puller
-Gaffer
-Generator Operator
-Grip
-Hair Dresser
-Helpers
-Key Grip
-Lighting Designer
-Lighting Technician
-Line Producer
-Location Manager
-Location Scouter
-Make-up Artist
-Outdoor Unit Technicians
-Post-Production
-Producer
-Production Assistant
-Production Coordinator
-Script Supervisor
-Set Decorator
-Sound
-Sound Editor
-Sound Mixer
-Special Effects Supervisor
-Stunt Coordinator
-Stunt Performer
-Technician
-TV Writer
-Unit Production Manager
-Utility Sound Technician
-Videographer
-Visual Effects
-Visual Effects Supervisor
-Equipment
-Audio
-Cameras
-Cranes
-Lights
-Other Equipments
-Graphics &amp; Design
-3D &amp; 2D Models
-Banner Ads
-Book Covers &amp; Packaging
-Business Cards &amp; Stationery
-Cartoons &amp; Caricatures
-Flyers &amp; Posters
-Illustrations
-Infographics
-Invitations
-Logo Design
-Others - Graphics &amp; Design
-Photoshop Editing
-Presentation Design
-Social Media Design
-T-Shirts
-Vector Tracing
-Web &amp; Mobile Design
-Lifestyle
-Cooking Recipes
-Diet &amp; Weight Loss
-Health &amp; Fitness
-Relationship Advice
-Music &amp; Audio
-Jingles &amp; Drops
-Mixing &amp; Mastering
-Music Direction
-Others - Music &amp; Audio
-Producers &amp; Composers
-Session Musicians &amp; Singers
-Singer - Songwriters
-Sound Effects
-Sound Recordist / Sound Assist
-Voice Over
-Others
-Promotion
-Banner Advertising
-Content Marketing
-Domain Research
-Email Marketing
-Flyers &amp; Handouts
-Hold Your Sign
-Human Billboards
-InFilm Branding
-Influencer Marketing
-Local Listings
-Marketing Strategy
-Mobile Advertising
-Music Promotion
-Others - Promotion
-Outdoor Advertising
-Pet Models
-Radio Advertising
-SEM
-SEO
-Social Media Marketing
-Video Advertising
-Web Analytics
-Web Traffic
-Software
-Convert Files
-Data Analysis &amp; Reports
-Databases
-Desktop Applications
-Ecommerce
-Gaming
-Mobile Apps &amp; Web
-Others - Programming &amp; Tech
-QA
-Support &amp; IT
-User Testing
-Web Programming
-Website Builders &amp; CMS
-WordPress
-Writing &amp; Translation
-Articles &amp; Blog Posts
-Business Copywriting
-Creative Writing
-Legal writing
-Others - Writing &amp; Translation
-Press Releases
-Proofreading &amp; Editing
-Research &amp; Summaries
-Resumes &amp; Cover Letters
-Script Writing
-Song Writing / Lyricist
-Transcription
-Translation,GreatFilmJobs.com">   
+  
     <link href="/css/scriptolution_style_v7.css" media="screen" rel="stylesheet" type="text/css" />  
+    <link href="/css/scriptolution_style_v7_user.css" media="screen" rel="stylesheet" type="text/css" />  
     <link href="/css/scriptolution_countries.php" media="screen" rel="stylesheet" type="text/css" />  
     <script type="text/javascript">
     var base_url = "";
@@ -225,7 +22,8 @@ Translation,GreatFilmJobs.com">
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="/js/jquery.customSelect.js"></script>
-	<script src="/js/scriptolution.js"></script>
+	<script src="/js/mainscriptolution.js"></script>
+    <script src="/js/scriptolution.js"></script>
     <script src="/js/scriptolution_notifications.js"></script>
         	<link rel="stylesheet" href="/colorbox/colorbox.css" />
 	<script src="/colorbox/jquery.colorbox.js"></script>
@@ -305,7 +103,7 @@ Translation,GreatFilmJobs.com">
   @if(isset(auth()->user()->id))
             <div class="logoutheader">
                 <div class="usernamebox droparrow">
-                                      <div class="userimage"><a href="/user/fatrin99"><img src="/images/membersprofilepic/thumbs/673.png" alt="fatrin99" height="25px" width="25px" class="scriptolutionradius3" /></a></div>
+                                      <div class="userimage"><a href="/user/{{auth()->user()->username}}"><img src="/images/membersprofilepic/thumbs/{{auth()->user()->profilepicture}}" alt="{{auth()->user()->username}}" height="25px" width="25px" class="scriptolutionradius3" /></a></div>
                     <p>Profile</p>
                        <div class="clear"></div>
                   <div class="dropdownbox">

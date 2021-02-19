@@ -12,6 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/check', function () {
+    return view('check');
+});
 
 Route::get('/home', function () {
     return view('index');
@@ -31,6 +34,7 @@ Route::get('/categories/{name}', [App\Http\Controllers\HomeController::class, 's
 Route::get('/bookmarks', [App\Http\Controllers\UserController::class, 'bookmarks']);
 Route::get('/buyer_request', [App\Http\Controllers\UserController::class, 'buyer_request']);
 Route::get('/create_job', [App\Http\Controllers\UserController::class, 'create_job']);
+Route::post('/create_job', [App\Http\Controllers\UserController::class, 'create_job_save']);
 Route::get('/inbox', [App\Http\Controllers\UserController::class, 'inbox']);
 Route::get('/manage_order', [App\Http\Controllers\UserController::class, 'manage_order']);
 Route::get('/myjobs', [App\Http\Controllers\UserController::class, 'myjobs']);
@@ -40,7 +44,7 @@ Route::get('/payment', [App\Http\Controllers\UserController::class, 'payment']);
 Route::get('/post_request', [App\Http\Controllers\UserController::class, 'post_request']);
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'settings']);
 Route::post('/settings', [App\Http\Controllers\UserController::class, 'settings_save']);
-
+Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'profile']);
 Route::get('/balance', [App\Http\Controllers\UserController::class, 'balance']);
 Route::get('/purchases', [App\Http\Controllers\UserController::class, 'purchases']);
 

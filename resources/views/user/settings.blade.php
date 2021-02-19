@@ -14,7 +14,7 @@
                                 <div class="form-entry">
                                 
                             		{{$user->username}}: Your public profile page is here: 
-                                	<a style="color: #45b5dc;" href="/user/fatrin99">/user/{{$user->username}}</a>
+                                	<a style="color: #45b5dc;" href="/user/{{$user->username}}"><?php echo ($_SERVER['SERVER_NAME']); ?>/user/{{$user->username}}</a>
                                 </div>
                                 <div class="scriptolutionclear"></div>
                                 
@@ -110,7 +110,8 @@
                             
                             
                             
-                            <form action="https://www.greatfilmjobs.com/dev/settings" class="reset-form" id="edit_pass_673" method="post">
+                            <form action="settings" class="reset-form" id="edit_pass_673" method="post">
+                              @csrf
                             <div class="scriptolutionpadding20">
                             	<h1>Change Password</h1>
                 				<div class="scriptolutionclear"></div>

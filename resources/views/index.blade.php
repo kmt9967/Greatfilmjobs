@@ -284,7 +284,7 @@
         </div>
         <div class="scriptolutionsmain2" style="top:-20px;"> 
             <div style="clear:both;"></div>
-    @php($block = App\Models\Categories::select('scriptolution_cattag1','scriptolution_cattag2','scriptolution_cattag3','scriptolution_catimage','name')->where('scriptolution_featuredcat','=',1)->orderBy('name','desc')->get()) 
+    @php($block = App\Models\Categories::select('scriptolution_cattag1','scriptolution_cattag2','scriptolution_cattag3','scriptolution_catimage','name','seo')->where('scriptolution_featuredcat','=',1)->orderBy('name','desc')->get()) 
             @foreach ($block as $x)
                 
             @php($name=htmlspecialchars_decode($x->name))
@@ -295,7 +295,7 @@
                 <p>
                     <a href="/categories/{{$name}}?s=p">{{$name}}</a>                    
                 </p>
-                <a href="/categories/Graphics-Design?s=p">
+                <a href="/categories/{{$x->seo}}">
                 <ul class="scriptolution-t-tags" style="padding-top:5px;">
                 	<li>{{$x->scriptolution_cattag1}}</li>                    <li>{{$x->scriptolution_cattag2}}</li>                    <li>{{$x->scriptolution_cattag3}}</li>                </ul>
                 </a>
@@ -330,13 +330,17 @@
                     
                         <div class="cusongsblock ">
                             <div class="songperson">
-                            	<a href="/Translation/{{$x->PID}}/{{$x->gtitle}}"><img src="/pics/t3/{{$x->p1}}" alt="{{$x->p1}}" width="214" height="132" /></a>
+                            	<a href="/{{$x->seo}}/{{$x->PID}}/{{$x->gtitle}}"><img src="/pics/t3/{{$x->p1}}" alt="{{$x->p1}}" width="214" height="132" /></a>
                                                                                                                             </div>
                             <div class="price 222">
-                                                            797</div>
+                                <?php $value=$x->price;
+                                     echo $value*159.05;
+                                     ?></div>
                             <p>
-                            	                            	<a href="/Translation/{{$x->PID}}/{{$x->gtitle}}">I will {{$x->gtitle}} 
-                                                                    797</a>
+                            	                            	<a href="/{{$x->seo}}/{{$x->PID}}/{{$x->gtitle}}">I will {{$x->gtitle}} 
+                                      <?php $value=$x->price;
+                                     echo $value*159.05;
+                                     ?></a>
                             </p> @php($u= App\Models\User::select('username','profilepicture','country')->where('id','=',$x->USERID)->get()) 
                                <?php if($u[0]->profilepicture!=null) 
                                         {$pic=$u[0]->profilepicture; }
