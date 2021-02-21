@@ -163,7 +163,7 @@
 					<div class="clear"></div>				
 				</div>
 			</div>
-			@extends('layout.sidebar')
+			@include('layout.sidebar')
 		</div>    
 	</div>
 </div>

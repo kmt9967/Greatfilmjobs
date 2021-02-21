@@ -3,8 +3,13 @@
 namespace App\Http\Controllers;
 use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Posts;
+use App\Models\Extra;
+use App\Models\Orders;
 use Illuminate\Http\Request;
+Use Redirect;
 use Illuminate\Support\Facades\Hash;
+use Storage;
 
 class UserController extends Controller
 {
@@ -28,141 +33,249 @@ class UserController extends Controller
         return view('user.create_job');
     }
 
-    public function create_job_save()
+    public function create_job_save(Request $request)
     {
         $file=$request->file('gphoto');
         $file2=$request->file('gphoto2');
         $file3=$request->file('gphoto3');
-        $gfile=$request->file('instantfile');
+        $fileg=$request->file('instantfile');
 
+        
         
         if(isset($file))
                 {
-
-                $fileg=$fileg->getClientOriginalName();
-                $file_nameg=pathinfo($filewexg,PATHINFO_FILENAME);
-                $exg= $fileg->getClientOriginalExtension();
-                $store_nameg=$file_nameg."_".time().uniqid().".".$exg;
-                $pathg=$fileg->move('pics/',$store_nameg);
 
                 $filewex=$file->getClientOriginalName();
                 $file_name=pathinfo($filewex,PATHINFO_FILENAME);
                 $ex= $file->getClientOriginalExtension();
                 $store_name=$file_name."_".time().uniqid().".".$ex;
-                $path=$file->move('pics/',$store_name);
+                $path=$file->move('pics/',$store_name);    
+        
+        }
+        else{
+      
+            $store_name="none";
+         
+        }
 
-                $filewex2=$file2->getClientOriginalName();
-                $file_name2=pathinfo($filewex2,PATHINFO_FILENAME);
-                $ex2= $file2->getClientOriginalExtension();
-                $store_name2=$file_name2."_".time().uniqid().".".$ex2;
-                $path2=$file2->move('pics/',$store_name2);
+        $morepic=$request->input('more-photos');
+        if(isset($morepic))
+                {
+                   
+                    if(isset($file2) && !isset($file3) )
+                    {
+                        $filewex2=$file2->getClientOriginalName();
+                        $file_name2=pathinfo($filewex2,PATHINFO_FILENAME);
+                        $ex2= $file2->getClientOriginalExtension();
+                        $store_name2=$file_name2."_".time().uniqid().".".$ex2;
+                        $path2=$file2->move('pics/',$store_name2);
+                        $store_name3="none";
+                    }
+                    else if(isset($file3) && !isset($file2))
+                    {
+                        $filewex3=$file3->getClientOriginalName();
+                        $file_name3=pathinfo($filewex3,PATHINFO_FILENAME);
+                        $ex3= $file3->getClientOriginalExtension();
+                        $store_name3=$file_name3."_".time().uniqid().".".$ex3;
+                        $file3->move("pics/",$store_name3);
+                        $store_name2="none";
+                    }
+                    else
+                    {
+                        $filewex2=$file2->getClientOriginalName();
+                        $file_name2=pathinfo($filewex2,PATHINFO_FILENAME);
+                        $ex2= $file2->getClientOriginalExtension();
+                        $store_name2=$file_name2."_".time().uniqid().".".$ex2;
+                        $path2=$file2->move('pics/',$store_name2);
 
-                $filewex3=$file3->getClientOriginalName();
-                $file_name3=pathinfo($filewex3,PATHINFO_FILENAME);
-                $ex3= $file3->getClientOriginalExtension();
-                $store_name3=$file_name3."_".time().uniqid().".".$ex3;
-                $path3=$file3->move('pics/',$store_name3);
+                        $filewex3=$file3->getClientOriginalName();
+                        $file_name3=pathinfo($filewex3,PATHINFO_FILENAME);
+                        $ex3= $file3->getClientOriginalExtension();
+                        $store_name3=$file_name3."_".time().uniqid().".".$ex3;
+                        $path3=$file3->move('pics/',$store_name3);
 
-                $data=Posts::create([
-                    'gtitle' => $request->input('gtitle'),
-                    'price'=>$request->input('prices') ,
-                    'category' => $request->input('gcat') ,
-                    'gdesc' => $request->input('gdesc') ,
-                    'ginst' => $request->input('ginst') ,
-                    'gtags' => $request->input('gtags'),
-                    'days' => $request->input('gdays'),
-                    'iurl'=> $request->input('instanturl'),
-                    'ifile'=> $store_nameg,
-                    'p1'=>$store_name,
-                    'p2'=>$store_name2,
-                    'p2'=>$store_name3,
-                    'scriptolution_add_multiple'=>$request->input('multiplemax'),
-                    'youtube'=>$request->input('gyoutube'),
-                    'scriptolutionship1'=>$request->input('scriptolutionship1'),
-                    'scriptolutionship1to'=>$request->input('scriptolutionship1to'),
-                    'scriptolutionship2'=>$request->input('scriptolutionship2'),
-                    'price2'=>0,
-                    'price3'=>0,
-                    'ctp2'=>0,
-                    'ctp3'=>0,
-                    'active'=>0,
-                    'last_viewed'=> time(),
-                    'pip'=>$request->ip(),
-                    'scriptolutioncity'=>$request->input('scriptolutioncity'),
-                    'scriptolutionstate'=>$request->input('scriptolutionstate'),
-                    'scriptolutioncountry'=>$request->input('scriptolutioncountry'),
-                    'scriptolutionjoblocation'=>'none'
-            
-            
-                ]);
+                    }
+                }
+        else{
+                    $store_name2="none";
+                    $store_name3="none";
+         }
+                
+         $date=$request->input('gdays');
+        if(isset($fileg))
+        {
+            $filewexg=$fileg->getClientOriginalName();
+            $file_nameg=pathinfo($filewexg,PATHINFO_FILENAME);
+            $exg= $fileg->getClientOriginalExtension();
+            $code=time().rand();
+            $store_nameg=$code.".".$exg;
+            $pathg=$fileg->move('files/',$store_nameg);
+            $store_nameg=$code;
+            $date=0;
+
+        }
+        else
+        {
+            $store_nameg=0;
+        }
+
+        $multipleme= $request->input('multipleme');
+        if(isset($multipleme))
+        {
+            $mul=$request->input('multiplemax');
+        }
+        else{
+            $mul=0;
+        }
+     
+        $shipme= $request->input('shipme');
+        if(isset($shipme))
+        {
+            $s1=$request->input('scriptolutionship1');
+            $s2=$request->input('scriptolutionship2');
+            $sc=$request->input('country');
+
+        }
+        else{
+            $s1=0;
+            $s2=0;
+            $sc=0;
+        }
+        $iurl= $request->input('instanturl');
+        if(!isset($iurl))
+        {
+            $iurl="none";
+        }
+
+        $youtube= $request->input('gyoutube');
+        if(!isset($youtube))
+        {
+            $youtube=0;
+        }
+        $extrasme= $request->input('extrasme');
+        if(isset($extrasme))
+        {
+            $ex=1;
+        }
+        else
+        {
+            $ex=0;
+        }
+        
+        $data=Posts::create([
+            'USERID'=>auth()->user()->id,
+            'gtitle' => $request->input('gtitle'),
+            'price'=>$request->input('prices') ,
+            'category' => $request->input('gcat') ,
+            'gdesc' => $request->input('gdesc') ,
+            'ginst' => $request->input('ginst') ,
+            'gtags' => $request->input('gtags'),
+            'days' => $date,
+            'iurl'=> $iurl,
+            'ifile'=> $store_nameg,
+            'p1'=>$store_name,
+            'p2'=>$store_name2,
+            'p3'=>$store_name3,
+            'scriptolution_add_multiple'=>$mul,
+            'youtube'=>$youtube,
+            'scriptolutionship1'=>$s1,
+            'scriptolutionship1to'=>$sc,
+            'scriptolutionship2'=>$s2,
+            'price2'=>0,
+            'price3'=>0,
+            'ctp2'=>0,
+            'ctp3'=>0,
+            'active'=>0,
+            'last_viewed'=> time(),
+            'pip'=>$request->ip(),
+            'scriptolutioncity'=>$request->input('scriptolutioncity'),
+            'scriptolutionstate'=>$request->input('scriptolutionstate'),
+            'scriptolutioncountry'=>$request->input('scriptolutioncountry'),
+            'scriptolutionjoblocation'=>'none',
+            'short'=>"none",
+            'extras'=>$ex
+    
+    
+        ]);
+        
+        if(isset($extrasme))
+        {
             $i=1;
             while($i<4)
             {
                 $edata=Extra::create([
                     'PID'=>$data->id,
                     'etitle'=>$request->input('extra'.$i),
-                    'eprice'=>$request->input('extraprice'.$i)
+                    'eprice'=>$request->input('extraprice'.$i),
+                    'ctp'=>0
                 ]);
                 $i++;
             }
-        
         }
-        else{
-            $data=Posts::create([
-                'gtitle' => $request->input('gtitle'),
-                'price'=>$request->input('prices') ,
-                'category' => $request->input('gcat') ,
-                'gdesc' => $request->input('gdesc') ,
-                'ginst' => $request->input('ginst') ,
-                'gtags' => $request->input('gtags'),
-                'days' => $request->input('gdays'),
-                'iurl'=> $request->input('instanturl'),
-                'ifile'=> $store_nameg,
-                'p1'=>'noprofilepicture.gif',
-                'scriptolution_add_multiple'=>$request->input('multiplemax'),
-                'youtube'=>$request->input('gyoutube'),
-                'scriptolutionship1'=>$request->input('scriptolutionship1'),
-                'scriptolutionship1to'=>$request->input('scriptolutionship1to'),
-                'scriptolutionship2'=>$request->input('scriptolutionship2'),
-                'price2'=>0,
-                'price3'=>0,
-                'ctp2'=>0,
-                'ctp3'=>0,
-                'active'=>0,
-                'last_viewed'=> time(),
-                'pip'=>$request->ip(),
-                'scriptolutioncity'=>$request->input('scriptolutioncity'),
-                'scriptolutionstate'=>$request->input('scriptolutionstate'),
-                'scriptolutioncountry'=>$request->input('scriptolutioncountry'),
-                'scriptolutionjoblocation'=>'none'
-                ]);
-        $i=1;
-        while($i<4)
-        {
-            $edata=Extra::create([
-                'PID'=>$data->id,
-                'etitle'=>$request->input('extra'.$i),
-                'eprice'=>$request->input('extraprice'.$i)
-            ]);
-            $i++;
-        }
-        }
-        return view('user.create_job');
+       
+
+        return redirect('/user/'.auth()->user()->username);
     }
 
     public function inbox()
     {
         return view('user.inbox');
     }
+    public function purchases()
+    {
+        return view('user.purchases');
+    }
+//complete
 
     public function manage_order()
     {
-        return view('user.manage_order');
+        $data=Orders::all();
+        return view('user.manage_order',['orders'=>$data]);
+    }
+
+    public function manage_gig(Request $request,$status)
+    {
+        //suspended or cancelled 2 for user 4 for admin
+        //active 1
+        //complete 5
+        //delivered 4
+        $check=0;
+        if($status=='suspend')
+        {
+            $value=2;
+            
+        }
+        elseif($status=='active'){
+            $value=1;
+        }
+        elseif($status=='delete'){
+            $check=1;
+        }
+        if($check!=1)
+        {
+        $gig=$request->input(['gig']);
+            foreach($gig as $x)
+            {
+                $data=Posts::where('PID',$x)->update([
+                    'active' => $value
+    
+                ]);
+            }
+        }
+        else{
+            foreach($gig as $x)
+            {
+                $data=Posts::where('PID',$x)->delete();
+            }
+
+        }
+        return Redirect::back();
     }
 
     public function myjobs()
     {
-        return view('user.myjobs');
+        $data=User::find(auth()->user()->id);
+        return view('user.myjobs')->with('user',$data);
     }
     
     public function myrequests()

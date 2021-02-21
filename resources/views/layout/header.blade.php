@@ -23,6 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js" type="text/javascript"></script>
     <script src="/js/jquery.customSelect.js"></script>
 	<script src="/js/mainscriptolution.js"></script>
+    <script src="/js/jquery.js"></script>
     <script src="/js/scriptolution.js"></script>
     <script src="/js/scriptolution_notifications.js"></script>
         	<link rel="stylesheet" href="/colorbox/colorbox.css" />

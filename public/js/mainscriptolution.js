@@ -66,15 +66,16 @@ $(document).ready( function() {
 	});
 	$('.btn-suspend').click(function() {
 		if ($('.checkbox:checked').size() > 0) {
-			$('#gigs_form').attr('action',base_url+'/manage_gigs?suspend=1');
+			$('#gigs_form').attr('action',base_url+'/manage_gig/suspend');
 			$('#gigs_form').submit();
+		
 		} else {
 			return false;
 		}
 	});
 	$('.btn-activate').click(function() {
 		if ($('.checkbox:checked').size() > 0) {
-			$('#gigs_form').attr('action',base_url+'/manage_gigs?activate=1');
+			$('#gigs_form').attr('action',base_url+'/manage_gig/active');
 			$('#gigs_form').submit();
 		} else {
 			return false;
@@ -82,7 +83,7 @@ $(document).ready( function() {
 	});
 	$('.btn-delete').click(function() {
 		if ($('.checkbox:checked').size() > 0) {
-			$('#gigs_form').attr('action',base_url+'/manage_gigs?delete=1');
+			$('#gigs_form').attr('action',base_url+'/manage_gig/delete');
 			$('#gigs_form').submit();
 		} else {
 			return false;

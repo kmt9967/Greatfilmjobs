@@ -12,9 +12,9 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/check', function () {
-    return view('check');
-});
+// Route::post('/manage_gig', function () {
+//     return view('check');
+// });
 
 Route::get('/home', function () {
     return view('index');
@@ -47,6 +47,8 @@ Route::post('/settings', [App\Http\Controllers\UserController::class, 'settings_
 Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'profile']);
 Route::get('/balance', [App\Http\Controllers\UserController::class, 'balance']);
 Route::get('/purchases', [App\Http\Controllers\UserController::class, 'purchases']);
+Route::post('/manage_gig/{status}', [App\Http\Controllers\UserController::class, 'manage_gig']);
+Route::get('/post/{id}/{name}', [App\Http\Controllers\UserController::class, 'manage_gig']);
 
 
 

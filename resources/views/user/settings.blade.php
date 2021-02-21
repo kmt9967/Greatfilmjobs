@@ -56,6 +56,7 @@
                                       <label class="editgigformtitle" for="country">Country</label>
                                     </div>
                                     <div class="column-r">
+                                      
                                       @include('data.country')
                                     </div>
                                   </div>

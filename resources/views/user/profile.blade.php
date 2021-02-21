@@ -49,12 +49,15 @@
             <div class="cusongs" style="padding-top:10px;">
                 <div class="scriptolution-jobsbyuser">Jobs by {{$user->username}}</div>
                 <div class="cusongslist">
-                    @php($block_ = App\Models\Posts::select('gtitle','p1','PID','USERID','price')->where('USERID','=',auth()->user()->id)->get())
-                    @php($block=$block_[0]) 
+                    @php($post = App\Models\Posts::select('gtitle','p1','PID','USERID','price')->where('USERID','=',auth()->user()->id)->get())
+          
                     @php($seo= App\Models\Categories::select('seo')->where('CATID','=',$user->category)->get())
+                    @foreach ($post as $block)
+                        
+                    
                      <div class="cusongsblock ">
                             <div class="songperson">
-                            	<a href="/{{$seo}}/{{$block->PID}}/{{$block->gtitle}}"><img src="/pics/t3/{{$block->p1}}" alt="{{$block->gtitle}}" width="214" height="132"></a>
+                            	<a href="/{{$seo}}/{{$block->PID}}/{{$block->gtitle}}"><img src="/pics/{{$block->p1}}" alt="{{$block->gtitle}}" width="214" height="132"></a>
                                     </div>
                             <div class="price 222">
                                                             <?php $value=$block->price;
@@ -78,7 +81,7 @@
                                 </div>
                             </div>
                         </div>
-                                        
+                           @endforeach             
                     <div class="clear"></div>
                 </div>
                 <div class="clear" style="padding-bottom:20px;"></div>
