@@ -1,11 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\Offer;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Posts;
 use App\Models\Extra;
 use App\Models\Orders;
+use App\Models\Buy_Req;
 use Illuminate\Http\Request;
 Use Redirect;
 use Illuminate\Support\Facades\Hash;
@@ -18,14 +20,41 @@ class UserController extends Controller
         return view('user.bookmarks');
     }
 
+    public function buy_req_cat($cat)
+    {
+        $data=Buy_Req::where(['active'=>1 ,'scriptolutioncategory'=>$cat])->get();
+        return view('user.buyer_request',['req'=>$data ]);
+
+    }
+
     public function balance()
     {
         return view('user.balance');
     }
+    public function sendoffer()
+    {
+        $data=Posts::select('gtitle','PID')->get();
+        return view('user.sendoffer',['data'=>$data]);
+    }
+    public function sendoffer_save(Request $request,$id)
+    {
+        $data=Offer::create([
+        'REQUESTID'=> $id,
+        'USERID' => auth()->user()->id,
+        'scriptolutionmsg'=> $request->input('gdesc'),
+        'PID'=>$request->input('gjobscriptolution')
+        ]);
+        return redirect('buyer_request');
+    }
 
     public function buyer_request()
     {
-        return view('user.buyer_request');
+        $name=[];
+        $data=Buy_Req::where('active','=',1)->get();
+        
+        
+        
+        return view('user.buyer_request',['req'=>$data ]);
     }
     
     public function create_job()
@@ -304,6 +333,23 @@ class UserController extends Controller
         return view('user.post_request');
     }
 
+    public function post_request_save(Request $request)
+    {
+        $data = Buy_Req::create([
+            
+            'USERID' => auth()->user()->id	,
+            'scriptolutiondesc'=> $request->input('gdesc'),	
+            'scriptolutioncategory'	=> $request->input('gcat'),
+            'scriptolutiondays' => $request->input('gdays')	,
+            'time_added'=> time()	,
+            'active'=>0	,
+            'pip'=>$request->ip()	,
+            'scriptolutionprice'=>$request->input('gprice')
+
+        ]);
+        return redirect('/buyer_request');
+    }
+    
     public function settings()
     {
         $data=User::find(auth()->user()->id);

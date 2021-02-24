@@ -70,7 +70,9 @@
                                         <label class="editgigformtitle" for="gig_category">Category</label>
                                       </div>
                                       <div class="column-r">
-                                       @include('data.categories')                                                                                                                          </select>
+                                        <select class="text" id="gig_category_id" name="gcat"><option value="0">Please select</option>
+                                       @include('data.categories')
+                                        </select>                                                                                                                          </select>
                                       </div>
                                     </div>
                                     <div class="scriptolutionclear"></div>

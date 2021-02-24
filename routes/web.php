@@ -42,13 +42,17 @@ Route::get('/myrequests', [App\Http\Controllers\UserController::class, 'myreques
 Route::get('/orders', [App\Http\Controllers\UserController::class, 'orders']);
 Route::get('/payment', [App\Http\Controllers\UserController::class, 'payment']);
 Route::get('/post_request', [App\Http\Controllers\UserController::class, 'post_request']);
+Route::post('/post_request', [App\Http\Controllers\UserController::class, 'post_request_save']);
 Route::get('/settings', [App\Http\Controllers\UserController::class, 'settings']);
 Route::post('/settings', [App\Http\Controllers\UserController::class, 'settings_save']);
 Route::get('/user/{name}', [App\Http\Controllers\UserController::class, 'profile']);
 Route::get('/balance', [App\Http\Controllers\UserController::class, 'balance']);
 Route::get('/purchases', [App\Http\Controllers\UserController::class, 'purchases']);
 Route::post('/manage_gig/{status}', [App\Http\Controllers\UserController::class, 'manage_gig']);
-Route::get('/post/{id}/{name}', [App\Http\Controllers\UserController::class, 'manage_gig']);
+Route::get('/sendoffer/{id}', [App\Http\Controllers\UserController::class, 'sendoffer']);
+Route::post('/sendoffer/{id}', [App\Http\Controllers\UserController::class, 'sendoffer_save']);
+Route::get('/buyer_req/{cat}', [App\Http\Controllers\UserController::class, 'buy_req_cat']);
+
 
 
 

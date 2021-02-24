@@ -9,6 +9,7 @@ class Orders extends Model
 {
     use HasFactory;
     protected $table="orders";
+    public $timestamps = false;
     protected $fillable = [
     'OID',
     'USERID',

@@ -56,4 +56,11 @@ class User extends Authenticatable
     // protected $casts = [
     //     'email_verified_at' => 'datetime',
     // ];
+
+    public function posts(){
+        return $this -> hasMany('App\Models\Posts','USERID');
+    }
+    public function buyer_request(){
+        return $this -> hasMany('App\Models\Buy_Req','USERID');
+    }
 }

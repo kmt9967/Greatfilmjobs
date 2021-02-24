@@ -1,4 +1,4 @@
-<select class="text" id="gig_category_id" name="gcat"><option value="0">Please select</option>
+
     <option value="78" >Animation &amp; Video</option>
                                                             <option value="83" >- After Effects</option>
 <option value="86" >- Animated Characters &amp; Modeling</option>
@@ -204,4 +204,4 @@
 <option value="120" >- Song Writing / Lyricist</option>
 <option value="129" >- Transcription</option>
 <option value="123" >- Translation</option>
-                                                </select>
+                                                

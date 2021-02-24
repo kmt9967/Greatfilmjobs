@@ -44,4 +44,8 @@ class Posts extends Model
         'short'
 
     ];
+
+    public function users(){
+        return $this -> belongsTo('App\Models\User','id');
+    }
 }
