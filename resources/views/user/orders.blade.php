@@ -9,21 +9,28 @@
 				<div class="whiteBox twoHalfs padding15 scriptolutionshop">
 					<h1>My Shopping</h1>
                     <h4>Track and manage your purchases</h4>
+					<?php 
+					function status($x) {
+  
+						$post = App\Models\Orders::where('status','=',$x)->get();
+						return $post->count();
+					}
+					?>
 					<div class="whiteBox inside">
 						<div class="block inside">
-							<span class="number"><a href="https://www.greatfilmjobs.com/dev/orders?s=active&amp;b=id&amp;a=desc">6</a></span>
-							<span class="descr">Active</span>
+							<span class="number"><a href="/manage_orders?s=active&amp;b=id&amp;a=desc">{{status(1)}}</a></span>
+							<span class="descr">Active Orders</span>
 						</div>
 						<div class="block inside">
-							<span class="number"><a href="https://www.greatfilmjobs.com/dev/orders?s=review&amp;b=id&amp;a=desc">0</a></span>
-							<span class="descr">Pending My Review</span>
+							<span class="number"><a href="/manage_orders?s=delivered&amp;b=id&amp;a=desc">{{status(4)}}</a></span>
+							<span class="descr">Delivered</span>
 						</div>
 						<div class="block inside">
-							<span class="number"><a href="https://www.greatfilmjobs.com/dev/orders?s=completed&amp;b=id&amp;a=desc">0</a></span>
+							<span class="number"><a href="/manage_orders?s=completed&amp;b=id&amp;a=desc">{{status(5)}}</a></span>
 							<span class="descr">Completed</span>
 						</div>
 						<div class="block inside last">
-							<span class="number"><a href="https://www.greatfilmjobs.com/dev/orders?s=cancelled&amp;b=id&amp;a=desc">2</a></span>
+							<span class="number"><a href="/manage_orders?s=cancelled&amp;b=id&amp;a=desc">{{status(2)+status(3)+status(7)}}</a></span>
 							<span class="descr">Cancelled</span>
 						</div>
 					</div>
@@ -31,132 +38,58 @@
 						<table>
 							<thead>
 								<tr>
-									<td colspan="2" style="text-align:left;"><a href="https://www.greatfilmjobs.com/dev/orders?s=active&amp;b=id&amp;a=asc">Order</a></td>
-									<td><a href="https://www.greatfilmjobs.com/dev/orders?s=active&amp;b=date&amp;a=asc">Created</a></td>
-									<td><a href="https://www.greatfilmjobs.com/dev/orders?sactive=&amp;b=status&amp;a=asc">Status</a></td>
+									
+									<td colspan="2" style="text-align:left;"><a href="/manage_orders">Order</a></td>
+									<td><a href="/manage_orders">Created</a></td>
+									<td><a href="/manage_orders">Status</a></td>
 								</tr>
 							</thead>
 							<tbody>
-                                                        									<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=8">#8</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=8">quality transcript audio and video</a>
-										</div>
-									</td>
-									<td>May 11</td>
-                                                                        <td class="status waiting_for_reqs" title="Seller needs more information!"><div style="border-radius: 3px;">Incomplete</div></td> 
-                                                                            
-								</tr>
-                                								<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=7">#7</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=7">quality transcript audio and video</a>
-										</div>
-									</td>
-									<td>May 11</td>
-                                                                        <td class="status waiting_for_reqs" title="Seller needs more information!"><div style="border-radius: 3px;">Incomplete</div></td> 
-                                                                            
-								</tr>
-                                								<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=6">#6</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=6">quality transcript audio and video</a>
-										</div>
-									</td>
-									<td>May 11</td>
-                                                                        <td class="status waiting_for_reqs" title="Seller needs more information!"><div style="border-radius: 3px;">Incomplete</div></td> 
-                                                                            
-								</tr>
-                                								<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=5">#5</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=5">quality transcript audio and video</a>
-										</div>
-									</td>
-									<td>May 11</td>
-                                                                        <td class="status waiting_for_reqs" title="Seller needs more information!"><div style="border-radius: 3px;">Incomplete</div></td> 
-                                                                            
-								</tr>
-                                								<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=3">#3</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=3">quality translate from English-Hindi-Gujarati</a>
-										</div>
-									</td>
-									<td>Dec 30</td>
-                                                                                                                                                            <td class="status late_delivery" title="Seller is delivering the order late."><div style="border-radius: 3px;">Late&nbsp;delivery</div></td>
-                                                                                                                    
-								</tr>
-                                								<tr>
-									<td class="status-star">
-                                    	<a href="https://www.greatfilmjobs.com/dev/track?id=2">#2</a>
-									</td>
-									<td class="ellipsis-wrap">
-										<div class="ellipsis"> 
-                                        	<a href="https://www.greatfilmjobs.com/dev/track?id=2">quality translate from English-Hindi-Gujarati</a>
-										</div>
-									</td>
-									<td>Dec 30</td>
-                                                                                                                                                            <td class="status late_delivery" title="Seller is delivering the order late."><div style="border-radius: 3px;">Late&nbsp;delivery</div></td>
-                                                                                                                    
-								</tr>
-                                														</tbody>
+								<?php
+									$stat=array(1=>"Active", 2=>"Cancelled By You", 3=>"Cancelled By Buyer", 7=>"Cancelled by Admin" , 
+												5=>"Completed" , 4=>"Delivered / Review Pending" , 0=>"Late");
+										$color=array(1=>"blue", 2=>"orange", 3=>"red", 7=>"red" , 
+											5=>"green" , 4=>"pink" , 0=>"red");
+											?>
+								@foreach ($orders as $x)
+									
+								@php($status=$x->status)
+								
+								@php($post = App\Models\Posts::select('gtitle','active')->where('PID','=',$x->PID)->get())
+								
+								<td class="status-star">
+									<a href="/track/{{$x->OID}}">#{{$x->OID}}</a>
+								</td>
+								<td class="ellipsis-wrap">
+									<div class="ellipsis"> 
+										<a href="/track/{{$x->OID}}">{{$post[0]->gtitle}}</a>
+									</div>
+								</td>
+										<td><a href="/manage_orders/{{$x->PID}}" ><?php $date=($x->time_added)+ (7 * 24 * 60 * 60); echo date('d/M/y',$date); ?></a></td>
+										<td  ><div style="border-radius: 3px;  background-color:{{$color[$status]}};"><a href="/manage_orders/{{$x->PID}}" style=" font-weight: bold; color:white"><?php 
+										
+										
+										echo $stat[$status];
+										
+										?></a></div></td>
+									</tr>
+								@endforeach
+								<tr>
+								@if(!isset($orders))
+								
+								<td colspan="4">
+                                No orders available for display.
+                                </td>
+								@endif
+                            </tr>
+                            							</tbody>
 						</table>
 					</div>
 					<div class="clear"></div>				
 				</div>
 			</div>
-			<div class="right-side">
-    <div class="sidebarBlock">
-        <h3>ACTIONS</h3>
-        <ul>
-            <li><a href="https://www.greatfilmjobs.com/dev/new" class="greenBtn"><span>Create a Job</span></a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/newrequest" class="greenBtn"><span>Post a Request</span></a></li>
-            
-        </ul>
-    </div>
-        <div class="sidebarBlock">
-        <h2>BUYER</h2>
-        <ul>
-        	<li><a href="https://www.greatfilmjobs.com/dev/myrequests">My Requests</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/orders">My Shopping</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/balance">Payments</a></li>
-        </ul>
-    </div>
-    <div class="sidebarBlock">
-        <h3>SELLER</h3>
-        <ul>
-            <li><a href="https://www.greatfilmjobs.com/dev/manage_gigs">My Jobs</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/manage_orders">Manage Sales</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/balance?tab=sales">Revenues</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/purchases">Purchases</a></li>
-            
-            <li><a href="https://www.greatfilmjobs.com/dev/requests">Buyer Requests</a></li>
-        </ul>
-    </div>
-        <div class="sidebarBlock noBorder">
-        <h3>PROFILE</h3>
-        <ul>
-                        <li><a href="https://www.greatfilmjobs.com/dev/bookmarks">Stuff I Like</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/settings">Settings</a></li>
-        </ul>
-    </div>	
-</div>
+			@include('layout.sidebar')
+
 		</div>    
 	</div>
 </div>

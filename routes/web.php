@@ -52,6 +52,7 @@ Route::post('/manage_gig/{status}', [App\Http\Controllers\UserController::class,
 Route::get('/sendoffer/{id}', [App\Http\Controllers\UserController::class, 'sendoffer']);
 Route::post('/sendoffer/{id}', [App\Http\Controllers\UserController::class, 'sendoffer_save']);
 Route::get('/buyer_req/{cat}', [App\Http\Controllers\UserController::class, 'buy_req_cat']);
+Route::get('/myrequest_del/{req_id}', [App\Http\Controllers\UserController::class, 'myrequest_del']);
 
 
 

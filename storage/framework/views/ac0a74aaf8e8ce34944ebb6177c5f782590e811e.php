@@ -17,27 +17,32 @@
 								</tr>
 							</thead>
 							<tbody>
-                                                        	                                								<tr>
+                                <?php $__currentLoopData = $req; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $x): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                <tr>
 									<td class="status-star">
                                         <div class="scriptolutionviewrequest3">
-                                        	Dec 25, 2020
+                                        	<?php $date=($x->time_added)+ (7 * 24 * 60 * 60); echo date('d/M/y',$date); ?>
                                         </div>
 									</td>
 									<td class="ellipsis-wrap">
 										<div class="ellipsissuggest"> 
                                         	<div class="scriptolutionviewrequest1">
-                                        		srdf
+                                        		<?php echo e($x->scriptolutiondesc); ?>
+
                                             </div>
                                             <div class="scriptolutionviewrequest2">
-                                            	<span>Delivery: 2 days</span>
-                                                                                                <span>Budget: ₹8928</span>
+                                            	<span>Delivery: <?php echo e($x->scriptolutiondays); ?> days</span>
+                                                                                                <span>Budget: ₹<?php echo e($x->scriptolutionprice); ?> </span>
                                             </div>
 										</div>
 									</td>
                                     <td class="actionstatus">
-                                    	<a class="offersbuttonscriptolution" href="https://www.greatfilmjobs.com/dev/viewoffers?ID=3">0 Offers</a>
+                                        <?php $count=App\Models\Offer::where('REQUESTID','=',$x->REQUESTID)->get();
+										$count=$count->count();
+										?>
+                                    	<a class="offersbuttonscriptolution" href="/viewoffers?ID=3"><?php echo e($count); ?> Offers</a>
                                         <div style="clear:both; padding-top:15px;"></div>
-                                        <a class="newscriptolutionredbutton" href="https://www.greatfilmjobs.com/dev/myrequests?del=1&amp;ID=3">Delete</a>
+                                        <a class="newscriptolutionredbutton" href="/myrequest_del/<?php echo e($x->REQUESTID); ?>">Delete</a>
                                     </td>
 								</tr>
                                                                 <tr>
@@ -45,7 +50,7 @@
                                        <div></div>
                                     </td>
                                 </tr>
-                                                                														</tbody>
+                                   <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>                             														</tbody>
 						</table>
 					</div>
 					<div class="clear"></div>
@@ -65,42 +70,8 @@
                 
                 
 			</div>
-			<div class="right-side">
-    <div class="sidebarBlock">
-        <h3>ACTIONS</h3>
-        <ul>
-            <li><a href="https://www.greatfilmjobs.com/dev/new" class="greenBtn"><span>Create a Job</span></a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/newrequest" class="greenBtn"><span>Post a Request</span></a></li>
-            
-        </ul>
-    </div>
-        <div class="sidebarBlock">
-        <h2>BUYER</h2>
-        <ul>
-        	<li><a href="https://www.greatfilmjobs.com/dev/myrequests">My Requests</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/orders">My Shopping</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/balance">Payments</a></li>
-        </ul>
-    </div>
-    <div class="sidebarBlock">
-        <h3>SELLER</h3>
-        <ul>
-            <li><a href="https://www.greatfilmjobs.com/dev/manage_gigs">My Jobs</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/manage_orders">Manage Sales</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/balance?tab=sales">Revenues</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/purchases">Purchases</a></li>
-            
-            <li><a href="https://www.greatfilmjobs.com/dev/requests">Buyer Requests</a></li>
-        </ul>
-    </div>
-        <div class="sidebarBlock noBorder">
-        <h3>PROFILE</h3>
-        <ul>
-                        <li><a href="https://www.greatfilmjobs.com/dev/bookmarks">Stuff I Like</a></li>
-            <li><a href="https://www.greatfilmjobs.com/dev/settings">Settings</a></li>
-        </ul>
-    </div>	
-</div>            	
+			<?php echo $__env->make('layout.sidebar', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?>
+                
 		</div>    
 	</div>
 </div>

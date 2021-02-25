@@ -66,12 +66,12 @@
 									</div>
 								</td>
 										<td><a href="/manage_orders/<?php echo e($x->PID); ?>" ><?php $date=($x->time_added)+ (7 * 24 * 60 * 60); echo date('d/M/y',$date); ?></a></td>
-										<td style="background-color:<?php echo e($color[$status]); ?>; " ><a href="/manage_orders/<?php echo e($x->PID); ?>" style=" padding:5px;  font-weight: bold; color:white"><?php 
+										<td  ><div style="border-radius: 3px;  background-color:<?php echo e($color[$status]); ?>;"><a href="/manage_orders/<?php echo e($x->PID); ?>" style=" font-weight: bold; color:white"><?php 
 										
 										
 										echo $stat[$status];
 										
-										?></a></td>
+										?></a></div></td>
 									</tr>
 								<?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 								<tr>

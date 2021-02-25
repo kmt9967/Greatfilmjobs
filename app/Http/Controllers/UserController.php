@@ -309,12 +309,23 @@ class UserController extends Controller
     
     public function myrequests()
     {
-        return view('user.myrequests');
+        $data=Buy_Req::where('USERID','=',auth()->user()->id)->get();
+        return view('user.myrequests',['req'=>$data]);
+    }
+
+    public function myrequest_del($req_id)
+    {
+        $data=Buy_Req::where('REQUESTID','=',$req_id)->delete();
+        Offer::where('REQUESTID','=',$req_id)->delete();
+
+        return Redirect::back();
+
     }
 
     public function orders()
     {
-        return view('user.orders');
+        $data=Orders::all();
+        return view('user.orders',['orders'=>$data]);
     }
 
     public function payment()
@@ -347,7 +358,7 @@ class UserController extends Controller
             'scriptolutionprice'=>$request->input('gprice')
 
         ]);
-        return redirect('/buyer_request');
+        return redirect('/myrequests');
     }
     
     public function settings()
